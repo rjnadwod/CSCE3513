@@ -1,0 +1,25 @@
+{
+    "_DATABASE-start.comment"                         : "Start _database_",
+	"_DATABASE-product-start.comment"                 : "Start _database - product_",
+    "0010001" : "Product was not found.",
+    "0010002" : "Unable to save product.",
+    "0010003" : "Unable to delete product.",
+    "0010004" : "Unable to retrieve product listing.",
+	"_DATABASE-product-end.comment"                   : "End _database - product_",
+    "_DATABASE-end.comment"                           : "End _database_",
+
+    "_GENERAL-start.comment"                          : "Start _general_",
+    "_GENERAL-product-start.comment"                  : "Start _general - product_",
+    "0102001" : "The provided product record ID is not valid.",
+    "0102002" : "Please provide a valid product lookup code.",
+    "0102003" : "Please provide a valid product count.",
+    "0102004" : "Product count may must be greater than or equal to zero.",
+    "0102005" : "Conflict on parameter: lookupcode.",
+    "_GENERAL-product-end.comment"                    : "End _general - product_",
+    "_GENERAL-end.comment"                            : "End _general_",
+
+    "_CONSTANTS-start.comment"                        : "Start _constants_",
+    "0202001" : "00000000-0000-0000-0000-000000000000",
+    "_0202001.comment" : "Empty UUID.",
+    "_CONSTANTS-end.comment"                          : "End _constants_"
+}
