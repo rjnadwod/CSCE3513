@@ -31,18 +31,18 @@
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",
     "bluebird": "^3.7.1",
-    "helmet": "^3.21.2",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-flash": "0.0.2",
     "express-session": "^1.17.0",
+    "helmet": "^3.21.2",
     "lusca": "^1.6.1",
-    "ejs": "^3.0.1",
-    "pg": "^7.14.0",
-    "sequelize": "^5.21.2",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "pg": "^7.18.2",
+    "sequelize": "^5.21.2"
   },
   "devDependencies": {
     "@types/bcrypt-nodejs": "^0.0.30",
