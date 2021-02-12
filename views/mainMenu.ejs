@@ -19,24 +19,28 @@
 	<div id="main" class="main">
 		<div id="error" <% if (!locals.errorMessage || (locals.errorMessage === "")) { %> class="hidden" <% } %>>
 			<h4 id="errorMessage" class="error-message">
+				<!--TODO: Add in error message functionality here-->>
 				<% if (locals.errorMessage && (locals.errorMessage !== "")) { %>
 					<%= locals.errorMessage %>
 				<% } %>
 			</h4>
 		</div>
 
+		<!--Main Menu Button Delcarations-->>
 		<div class="mainMenuActionsWrapper">
 			<br />
 			<button id="startTransactionButton" type="button" class="action" title="Functionality Not Available">Start Transaction</button>
 			<br /><br />
-			<button id="viewProductsButton" type="button" class="action">View Products</button>
+			<button id="viewProductsButton" type="button" class="action">Product List</button>
 			<div <% if (!locals.isElevatedUser) { %>class="hidden"<% } %>>
 				<br />
-				<button id="createEmployeeButton" type="button" class="action">Create Employee</button>
+				<button id="createEmployeeButton" type="button" class="action">Employee Details</button>
 				<br /><br />
+				<!---
 				<button id="productSalesReportButton" type="button" class="action" title="Functionality Not Available">Product Sales</button>
 				<br /><br />
-				<button id="cashierSalesReportButton" type="button" class="action" title="Functionality Not Available">Cashier Sales</button>
+				-->
+				<button id="cashierSalesReportButton" type="button" class="action" title="Functionality Not Available">Cashier Report</button>
 			</div>
 		</div>
 	</div>
