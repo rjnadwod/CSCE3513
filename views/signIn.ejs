@@ -15,7 +15,7 @@
 	<div class="header">
 		<h1 class="primary-message">Sign In</h1>
 	</div>
-		
+	<!--This div allows for error messages to be displayed when one is available-->	
 	<div id="main" class="main">
 		<div id="error" <% if (!locals.errorMessage || (locals.errorMessage === "")) { %> class="hidden" <% } %>>
 			<h4 id="errorMessage" class="error-message">
@@ -25,6 +25,8 @@
 			</h4>
 		</div>
 
+		<!-- This is the HTML form which submits employeeID and password to be validated during the sign in action-->
+		<!-- Need to invoke the method to be define in "Sign-in - Server Side Funcitonality" task of Sprint 2 -->
 		<form action="/" method="POST" onsubmit="return validateForm();" class="inputContent">
 			<div>
 				<input id="employeeId" type="number" name="employeeId" placeholder="Employee ID" class="update" value="<% if (locals.employeeId && (locals.employeeId.trim() !== '')) { %><%= locals.employeeId %><% } %>" />

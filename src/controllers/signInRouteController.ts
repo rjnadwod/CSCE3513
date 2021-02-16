@@ -14,7 +14,10 @@ export const start = async (req: Request, res: Response): Promise<void> => {
 
 				return res.redirect(ViewNameLookup.EmployeeDetail);
 			}
-
+// comments for commit
+// need to create a method to validate input on form submission
+// need to validate that employee ID is NUMERIC, not blank
+// need to validate that the password is not blank also
 			return res.render(
 				ViewNameLookup.SignIn,
 				<SignInPageResponse>{
