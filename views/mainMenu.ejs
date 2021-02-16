@@ -20,6 +20,7 @@
 		<div id="error" <% if (!locals.errorMessage || (locals.errorMessage === "")) { %> class="hidden" <% } %>>
 			<h4 id="errorMessage" class="error-message">
 				<!--TODO: Add in error message functionality here-->>
+				<!--This sends an error message-->>
 				<% if (locals.errorMessage && (locals.errorMessage !== "")) { %>
 					<%= locals.errorMessage %>
 				<% } %>
@@ -36,15 +37,14 @@
 				<br />
 				<button id="createEmployeeButton" type="button" class="action">Employee Details</button>
 				<br /><br />
-				<!---
-				<button id="productSalesReportButton" type="button" class="action" title="Functionality Not Available">Product Sales</button>
+				<button id="productSalesReportButton" type="button" class="action" title="Functionality Not Available">Sales Report</button>
 				<br /><br />
-				-->
 				<button id="cashierSalesReportButton" type="button" class="action" title="Functionality Not Available">Cashier Report</button>
 			</div>
 		</div>
 	</div>
 
+	<!--No clue hat this is yet; Random Checkbox?-->>
 	<div class="hidden">
 		<input type="checkbox" id="isRefreshed" class="hidden">
 		<script type="text/javascript">
@@ -61,6 +61,7 @@
 		</script>
 	</div>
 
+	<!--Sign Out Image-->
 	<div class="footer">
 		<img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out" class="footer" />
 	</div>
