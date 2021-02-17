@@ -27,6 +27,7 @@
 
 		<!-- This is the HTML form which submits employeeID and password to be validated during the sign in action-->
 		<!-- Need to invoke the method to be define in "Sign-in - Server Side Funcitonality" task of Sprint 2 -->
+		<!-- Must Validate in SignInRouteController which is where invoking validateForm() from-->
 		<form action="/" method="POST" onsubmit="return validateForm();" class="inputContent">
 			<div>
 				<input id="employeeId" type="number" name="employeeId" placeholder="Employee ID" class="update" value="<% if (locals.employeeId && (locals.employeeId.trim() !== '')) { %><%= locals.employeeId %><% } %>" />
