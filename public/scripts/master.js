@@ -179,13 +179,14 @@ function getErrorMessageDisplayElement() {
 // End getters and setters
 
 //Sign out
+//makes an HTTP request, then removes the curent user with AJAX
 function signOutActionClickHandler() {
 	ajaxDelete("/api/signOut", (callbackResponse) => {
 		if ((callbackResponse.data != null)
 			&& (callbackResponse.data.redirectUrl != null)
 			&& (callbackResponse.data.redirectUrl !== "")) {
 	
-			window.location.replace(callbackResponse.data.redirectUrl);
+			window.location.replace(callbackResponse.data.redirectUrl); //redirects to sign in
 		} else {
 			window.location.replace("/");
 		}

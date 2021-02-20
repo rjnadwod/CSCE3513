@@ -1,15 +1,16 @@
+//Determines what happens when main menu buttons are pressed
 document.addEventListener("DOMContentLoaded", () => {
 	getStartTransactionActionElement().addEventListener(
 		"click",
-		() => { displayError("Functionality has not yet been implemented."); });
+		() => { displayError("Functionality has not yet been implemented."); }); //displays error
 
 	getViewProductsActionElement().addEventListener(
 		"click",
-		() => { window.location.assign("/productListing"); });
+		() => { window.location.assign("/productListing"); }); //sends view to product listing page
 
 	getCreateEmployeeActionElement().addEventListener(
 		"click",
-		() => { window.location.assign("/employeeDetail"); });
+		() => { window.location.assign("/employeeDetail"); }); //sends view to employee detail
 
 	getProductSalesReportActionElement().addEventListener(
 		"click",
