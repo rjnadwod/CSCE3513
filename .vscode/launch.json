@@ -1,0 +1,19 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Register App Launch",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"preLaunchTask": "npm: rebuild",
+			"program": "${workspaceFolder}/dist/server.js",
+			"outFiles": [
+				"${workspaceFolder}/dist/**/*.js",
+				"${workspaceFolder}/dist/**/*.map"
+			]
+		}
+	]
+}
