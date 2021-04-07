@@ -17,9 +17,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const routingLookup_1 = require("./lookups/routingLookup");
+const Helper = __importStar(require("./helpers/routeControllerHelper"));
 const resourceLookup_1 = require("../resourceLookup");
 const ProductsQuery = __importStar(require("./commands/products/productsQuery"));
+const EmployeeHelper = __importStar(require("./commands/employees/helpers/employeeHelper"));
+const ValidateActiveUser = __importStar(require("./commands/activeUsers/validateActiveUserCommand"));
 const processStartProductListingError = (error, res) => {
+    if (Helper.processStartError(error, res)) {
+        return;
+    }
     res.setHeader("Cache-Control", "no-cache, max-age=0, must-revalidate, no-store");
     return res.status((error.status || 500))
         .render(routingLookup_1.ViewNameLookup.ProductListing, {
@@ -30,10 +36,19 @@ const processStartProductListingError = (error, res) => {
     });
 };
 exports.start = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    return ProductsQuery.query()
-        .then((productsCommandResponse) => {
+    if (Helper.handleInvalidSession(req, res)) {
+        return;
+    }
+    let isElevatedUser;
+    return ValidateActiveUser.execute(req.session.id)
+        .then((activeUserCommandResponse) => {
+        isElevatedUser =
+            EmployeeHelper.isElevatedUser(activeUserCommandResponse.data.classification);
+        return ProductsQuery.query();
+    }).then((productsCommandResponse) => {
         res.setHeader("Cache-Control", "no-cache, max-age=0, must-revalidate, no-store");
         return res.render(routingLookup_1.ViewNameLookup.ProductListing, {
+            isElevatedUser: isElevatedUser,
             products: productsCommandResponse.data
         });
     }).catch((error) => {

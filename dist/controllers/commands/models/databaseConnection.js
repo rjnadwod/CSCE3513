@@ -23,10 +23,6 @@ exports.DatabaseConnection = new sequelize_1.default.Sequelize(process.env.DATAB
         min: 0,
         acquire: 30000,
         max: defaultMaximumPoolSize
-    },
-    extra: {
-        ssl: true,
-        rejectUnauthorized: false
     }
 });
 exports.createTransaction = () => __awaiter(void 0, void 0, void 0, function* () {
