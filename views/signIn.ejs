@@ -1,11 +1,13 @@
 <html>
 
 <head>
+	<!--Title of Sign-in Web Page-->
 	<title>Register - Sign In</title>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
 	<link rel="stylesheet" type="text/css" href="/styles/master.css">
-
+	<!--Javascript scripts master.js and signIn.js called-->
 	<script type="text/javascript" src="/scripts/master.js" defer></script>
 	<script type="text/javascript" src="/scripts/signIn.js" defer></script>
 </head>
@@ -13,10 +15,12 @@
 <body>
 
 	<div class="header">
+		<!--Header of webpage titled Sign In-->
 		<h1 class="primary-message">Sign In</h1>
 	</div>
 		
 	<div id="main" class="main">
+		<!--Error checking and message if error occurs during sign-in attempt-->
 		<div id="error" <% if (!locals.errorMessage || (locals.errorMessage === "")) { %> class="hidden" <% } %>>
 			<h4 id="errorMessage" class="error-message">
 				<% if (locals.errorMessage && (locals.errorMessage !== "")) { %>
@@ -24,7 +28,7 @@
 				<% } %>
 			</h4>
 		</div>
-
+		<!--validateForm() function is called to validate that the proper ID and password requirements met-->
 		<form action="/" method="POST" onsubmit="return validateForm();" class="inputContent">
 			<div>
 				<input id="employeeId" type="number" name="employeeId" placeholder="Employee ID" class="update" value="<% if (locals.employeeId && (locals.employeeId.trim() !== '')) { %><%= locals.employeeId %><% } %>" />
@@ -34,6 +38,7 @@
 			</div>
 			<br /><br />
 			<div>
+				<!--Submit button used to sign in once ID and password entered-->
 				<input type="submit" value="Sign In" class="submit" />
 			</div>
 		</form>
