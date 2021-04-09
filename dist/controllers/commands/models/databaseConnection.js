@@ -17,16 +17,14 @@ const defaultMaximumPoolSize = 5;
 exports.DatabaseConnection = new sequelize_1.default.Sequelize(process.env.DATABASE_URL, {
     dialect: "postgres",
     protocol: "postgres",
+    "ssl": true,
+    dialectOptions: { "ssl": { require: true } },
     omitNull: true,
     freezeTableName: true,
     pool: {
         min: 0,
         acquire: 30000,
         max: defaultMaximumPoolSize
-    },
-    extra: {
-        ssl: true,
-        rejectUnauthorized: false
     }
 });
 exports.createTransaction = () => __awaiter(void 0, void 0, void 0, function* () {
