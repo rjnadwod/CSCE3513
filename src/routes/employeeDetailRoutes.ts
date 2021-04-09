@@ -12,7 +12,7 @@ function employeeDetailRoutes(server: express.Express) {
 		EmployeeDetailRouteController.startWithEmployee);
 	// performing patch request if employee exists in database (PS)
 	server.patch(
-		(RouteLookup.API + RouteLookup.EmployeeDetail
+		(RouteLookup.API + RouteLookup.EmployeeDetail   //PAYTON - look over (MA) thnx
 			+ RouteLookup.EmployeeIdParameter),
 		EmployeeDetailRouteController.updateEmployee);
 	// performing post request if employee is new (PS)
