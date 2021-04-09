@@ -51,10 +51,10 @@
 			</table>
 		</div>
 
-		<div class="productActionsWrapper<% if (!locals.isElevatedUser) { %> hidden<% } %>">
+		<div class="productActionsWrapper<% if (!locals.isElevatedUser) { %> hidden<% } %>"> <!-- Detects if user is elevated-->
 			<br />
 			<div id="deleteActionContainer" <% if (!locals.product || !locals.product.id || (locals.product.id.trim() === "")) { %>class="hidden"<% } %>>
-				<button id="deleteButton" type="button" class="action">Delete</button>
+				<button id="deleteButton" type="button" class="action">Delete</button> <!-- Doesnt show Delete and Save buttons if the user is not elevated-->
 				<br />
 				<br />
 			</div>
