@@ -5,20 +5,23 @@ import { Resources, ResourceKey } from "../../../resourceLookup";
 import { EmployeeClassification } from "../models/constants/entityTypes";
 import { CommandResponse, Employee, EmployeeSaveRequest } from "../../typeDefinitions";
 
+
+//Save Request Validation
 const validateSaveRequest = (
 	employeeSaveRequest: EmployeeSaveRequest,
 	isInitialEmployee: boolean = false
 ): CommandResponse<Employee> => {
 
 	let errorMessage: string = "";
-
+	//Check if fields are left blanks
 	if (Helper.isBlankString(employeeSaveRequest.firstName)) {
 		errorMessage = Resources.getString(ResourceKey.EMPLOYEE_FIRST_NAME_INVALID);
 	} else if (Helper.isBlankString(employeeSaveRequest.lastName)) {
 		errorMessage = Resources.getString(ResourceKey.EMPLOYEE_LAST_NAME_INVALID);
 	} else if (Helper.isBlankString(employeeSaveRequest.password)) {
 		errorMessage = Resources.getString(ResourceKey.EMPLOYEE_PASSWORD_INVALID);
-	} else if (!isInitialEmployee
+	} //Defaulting Classification to general manager
+	  else if (!isInitialEmployee
 		&& ((employeeSaveRequest.classification == null)
 			|| isNaN(employeeSaveRequest.classification)
 			|| !(employeeSaveRequest.classification in EmployeeClassification))) {
