@@ -10,6 +10,8 @@ import * as ValidateActiveUser from "./commands/activeUsers/validateActiveUserCo
 import { ViewNameLookup, ParameterLookup, RouteLookup, QueryParameterLookup } from "./lookups/routingLookup";
 import { EmployeeClassification, EmployeeClassificationLabel } from "./commands/models/constants/entityTypes";
 import { CommandResponse, Employee, EmployeeDetailPageResponse, EmployeeSaveRequest, EmployeeSaveResponse, EmployeeType, ActiveUser } from "./typeDefinitions";
+//Double check imports above (MA)
+
 
 // creating boolean variables to check if the employee exists and is an elevated user (PS)
 interface CanCreateEmployee {
@@ -53,7 +55,8 @@ const buildEmptyEmployee = (): Employee => {
 		managerId: Resources.getString(ResourceKey.EMPTY_UUID)
 	};
 };
-
+//Throw an error if employee details aren't valid
+//Names and passwords can't be blank, and employee type must match (MA)
 const processStartEmployeeDetailError = (error: any, res: Response): void => {
 	if (Helper.processStartError(error, res)) {
 		return;
@@ -68,10 +71,11 @@ const processStartEmployeeDetailError = (error: any, res: Response): void => {
 				employee: buildEmptyEmployee(),
 				employeeTypes: buildEmployeeTypes(),
 				errorMessage: (error.message
-					|| Resources.getString(ResourceKey.EMPLOYEE_UNABLE_TO_QUERY))
+					|| Resources.getString(ResourceKey.EMPLOYEE_UNABLE_TO_QUERY)) //Throw error if details are not valid (MA)
 			});
 };
 
+//Check if employee already exists before creating new employee (MA)
 const determineCanCreateEmployee = async (req: Request): Promise<CanCreateEmployee> => {
 	let employeeExists: boolean;
 
@@ -100,7 +104,7 @@ export const start = async (req: Request, res: Response): Promise<void> => {
 	if (Helper.handleInvalidSession(req, res)) {
 		return;
 	}
-
+//PAYTON - can you look back over this? (MA)
 	return determineCanCreateEmployee(req)
 		.then((canCreateEmployee: CanCreateEmployee): void => {
 			if (canCreateEmployee.employeeExists
@@ -152,6 +156,7 @@ export const startWithEmployee = async (req: Request, res: Response): Promise<vo
 		});
 };
 
+//request to save an employee if all details are valid (MA)
 const saveEmployee = async (
 	req: Request,
 	res: Response,
@@ -194,6 +199,7 @@ const saveEmployee = async (
 
 			res.status(saveEmployeeCommandResponse.status)
 				.send(response);
+		//catch block if cannot save employee
 		}).catch((error: any): void => {
 			return Helper.processApiError(
 				error,
@@ -204,11 +210,11 @@ const saveEmployee = async (
 				});
 		});
 };
-
+//return employee if successfully updated
 export const updateEmployee = async (req: Request, res: Response): Promise<void> => {
 	return saveEmployee(req, res, EmployeeUpdateCommand.execute);
 };
-
+//return employee if succesfully created
 export const createEmployee = async (req: Request, res: Response): Promise<void> => {
 	return saveEmployee(req, res, EmployeeCreateCommand.execute);
 };
