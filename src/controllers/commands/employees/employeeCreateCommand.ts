@@ -11,14 +11,15 @@ const validateSaveRequest = (
 ): CommandResponse<Employee> => {
 
 	let errorMessage: string = "";
-
+	//Check if inputs are blanks
 	if (Helper.isBlankString(employeeSaveRequest.firstName)) {
 		errorMessage = Resources.getString(ResourceKey.EMPLOYEE_FIRST_NAME_INVALID);
 	} else if (Helper.isBlankString(employeeSaveRequest.lastName)) {
 		errorMessage = Resources.getString(ResourceKey.EMPLOYEE_LAST_NAME_INVALID);
 	} else if (Helper.isBlankString(employeeSaveRequest.password)) {
 		errorMessage = Resources.getString(ResourceKey.EMPLOYEE_PASSWORD_INVALID);
-	} else if (!isInitialEmployee
+	} //Default Classification
+	  else if (!isInitialEmployee
 		&& ((employeeSaveRequest.classification == null)
 			|| isNaN(employeeSaveRequest.classification)
 			|| !(employeeSaveRequest.classification in EmployeeClassification))) {
