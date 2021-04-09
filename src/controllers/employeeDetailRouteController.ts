@@ -16,6 +16,7 @@ interface CanCreateEmployee {
 	isElevatedUser: boolean;
 }
 
+//Implement Employee types
 const buildEmployeeTypes = (): EmployeeType[] => {
 	const employeeTypes: EmployeeType[] = [];
 
@@ -39,6 +40,7 @@ const buildEmployeeTypes = (): EmployeeType[] => {
 	return employeeTypes;
 };
 
+//create and initialize employee detaiils
 const buildEmptyEmployee = (): Employee => {
 	return <Employee>{
 		id: "",
