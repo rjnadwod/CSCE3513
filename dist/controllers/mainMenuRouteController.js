@@ -16,43 +16,28 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const routingLookup_1 = require("./lookups/routingLookup");
-const Helper = __importStar(require("./helpers/routeControllerHelper"));
 const resourceLookup_1 = require("../resourceLookup");
-const ProductsQuery = __importStar(require("./commands/products/productsQuery"));
+const Helper = __importStar(require("./helpers/routeControllerHelper"));
 const EmployeeHelper = __importStar(require("./commands/employees/helpers/employeeHelper"));
+const routingLookup_1 = require("./lookups/routingLookup");
 const ValidateActiveUser = __importStar(require("./commands/activeUsers/validateActiveUserCommand"));
-const processStartProductListingError = (error, res) => {
-    if (Helper.processStartError(error, res)) {
-        return;
-    }
-    res.setHeader("Cache-Control", "no-cache, max-age=0, must-revalidate, no-store");
-    return res.status((error.status || 500))
-        .render(routingLookup_1.ViewNameLookup.ProductListing, {
-        products: [],
-        isElevatedUser: false,
-        errorMessage: (error.message
-            || resourceLookup_1.Resources.getString(resourceLookup_1.ResourceKey.PRODUCTS_UNABLE_TO_QUERY))
-    });
-};
 exports.start = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     if (Helper.handleInvalidSession(req, res)) {
         return;
     }
-    let isElevatedUser;
     return ValidateActiveUser.execute(req.session.id)
         .then((activeUserCommandResponse) => {
-        isElevatedUser =
-            EmployeeHelper.isElevatedUser(activeUserCommandResponse.data.classification);
-        return ProductsQuery.query();
-    }).then((productsCommandResponse) => {
+        const isElevatedUser = EmployeeHelper.isElevatedUser(activeUserCommandResponse.data.classification);
         res.setHeader("Cache-Control", "no-cache, max-age=0, must-revalidate, no-store");
-        return res.render(routingLookup_1.ViewNameLookup.ProductListing, {
+        return res.render(routingLookup_1.ViewNameLookup.MainMenu, {
             isElevatedUser: isElevatedUser,
-            products: productsCommandResponse.data
+            errorMessage: resourceLookup_1.Resources.getString(req.query[routingLookup_1.QueryParameterLookup.ErrorCode])
         });
     }).catch((error) => {
-        return processStartProductListingError(error, res);
+        if (!Helper.processStartError(error, res)) {
+            res.setHeader("Cache-Control", "no-cache, max-age=0, must-revalidate, no-store");
+            return res.render(routingLookup_1.ViewNameLookup.MainMenu, { errorMessage: error.message });
+        }
     });
 });
-//# sourceMappingURL=productListingRouteController.js.map
+//# sourceMappingURL=mainMenuRouteController.js.map
