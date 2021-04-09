@@ -11,11 +11,13 @@ import { ViewNameLookup, ParameterLookup, RouteLookup, QueryParameterLookup } fr
 import { EmployeeClassification, EmployeeClassificationLabel } from "./commands/models/constants/entityTypes";
 import { CommandResponse, Employee, EmployeeDetailPageResponse, EmployeeSaveRequest, EmployeeSaveResponse, EmployeeType, ActiveUser } from "./typeDefinitions";
 
+// creating boolean variables to check if the employee exists and is an elevated user (PS)
 interface CanCreateEmployee {
 	employeeExists: boolean;
 	isElevatedUser: boolean;
 }
 
+// employee must be cashier, shift manager, or general manager (PS)
 const buildEmployeeTypes = (): EmployeeType[] => {
 	const employeeTypes: EmployeeType[] = [];
 
@@ -39,6 +41,7 @@ const buildEmployeeTypes = (): EmployeeType[] => {
 	return employeeTypes;
 };
 
+// creating an employee with empty variables (PS)
 const buildEmptyEmployee = (): Employee => {
 	return <Employee>{
 		id: "",
@@ -60,6 +63,7 @@ const processStartEmployeeDetailError = (error: any, res: Response): void => {
 		.render(
 			ViewNameLookup.EmployeeDetail,
 			<EmployeeDetailPageResponse>{
+				// throws an error if employee details are invalid (PS)
 				isInitialEmployee: false,
 				employee: buildEmptyEmployee(),
 				employeeTypes: buildEmployeeTypes(),
