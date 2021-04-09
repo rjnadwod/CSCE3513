@@ -1,9 +1,10 @@
 <!--Employee Detail-->
 <html>
 
+
 <head>
 	<title>Register - Employee</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" type="text/css" href="/styles/master.css">
 
@@ -11,12 +12,11 @@
 	<script type="text/javascript" src="/scripts/employeeDetail.js" defer></script>
 </head>
 
-<body>
 
+<body>
 	<div class="header">
 		<h1 class="primary-message">Employee Detail</h1>
 	</div>
-		
 	<!--Allow for displaying error messages-->
 
 	<div id="main" class="main">
@@ -27,10 +27,8 @@
 				<% } %>
 			</h4>
 		</div>
-
-		<!--Providing inputs for the employee details-->
-
 		<div class="inputContent">
+			<!--Providing inputs for the employee details-->
 			<table id="employeeDetails">
 				<tbody>
 					<!--Input type hidden for employee record ID-->
@@ -96,6 +94,7 @@
 		</div>
 
 
+
 		<!--Allow for save-->
 		<div class="employeeActionsWrapper <% if (locals.errorMessage && (locals.errorMessage !== "")) { %>hidden<% } %>">
 			<br />
@@ -115,12 +114,14 @@
 	</div>
 
 
+
 	<!--Signing out-->
 	<div class="footer <% if (locals.isInitialEmployee) { %>hidden<% } %>">
 		<img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out" class="footer" />
 	</div>
 
-	
+
+
 </body>
 
 </html>
