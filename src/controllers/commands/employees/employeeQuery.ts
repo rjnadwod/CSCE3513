@@ -12,7 +12,7 @@ export const queryById = async (recordId?: string): Promise<CommandResponse<Empl
 			message: Resources.getString(ResourceKey.EMPLOYEE_RECORD_ID_INVALID)
 		});
 	}
-
+	//Query if employee is in database
 	return EmployeeRepository.queryById(<string>recordId)
 		.then((queriedEmployee: (EmployeeModel | null)): Promise<CommandResponse<Employee>> => {
 			if (!queriedEmployee) {
@@ -21,7 +21,7 @@ export const queryById = async (recordId?: string): Promise<CommandResponse<Empl
 					message: Resources.getString(ResourceKey.EMPLOYEE_NOT_FOUND)
 				});
 			}
-
+			//Mapping entity to employee object
 			return Promise.resolve(<CommandResponse<Employee>>{
 				status: 200,
 				data: EmployeeHelper.mapEmployeeData(queriedEmployee)
