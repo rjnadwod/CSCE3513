@@ -39,7 +39,7 @@ export const signIn = async (req: Request, res: Response): Promise<void> => {
 			return res.redirect(RouteLookup.MainMenu);
 		}).catch((error: any): void => {
 			console.error(
-				"An error occurred when attempting to perform employee sign in. "
+				"Error: Cannot complete employee sign-in. "
 				+ error.message);
 
 			return res.redirect(RouteLookup.SignIn
