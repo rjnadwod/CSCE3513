@@ -1,3 +1,4 @@
+<!--Employee Detail-->
 <html>
 
 <head>
@@ -16,6 +17,8 @@
 		<h1 class="primary-message">Employee Detail</h1>
 	</div>
 		
+	<!--Allow for displaying error messages-->
+
 	<div id="main" class="main">
 		<div id="error" <% if (!locals.errorMessage || (locals.errorMessage === "")) { %> class="hidden" <% } %>>
 			<h4 id="errorMessage" class="error-message">
@@ -25,9 +28,12 @@
 			</h4>
 		</div>
 
+		<!--Providing inputs for the employee details-->
+
 		<div class="inputContent">
 			<table id="employeeDetails">
 				<tbody>
+					<!--Input type hidden for employee record ID-->
 					<tr class="hidden">
 						<td>ID:</td>
 						<td>
@@ -46,30 +52,35 @@
 							<input id="employeeEmployeeId" type="text" value="<% if (locals.employee && locals.employee.employeeId) { %><%= locals.employee.employeeId %><% } %>" class="update" disabled />
 						</td>
 					</tr>
+					<!--Element of type text for first name-->
 					<tr>
 						<td class="label">First Name:</td>
 						<td>
 							<input id="employeeFirstName" type="text" value="<% if (locals.employee && locals.employee.firstName) { %><%= locals.employee.firstName %><% } %>" class="update" />
 						</td>
 					</tr>
+					<!--Element of type text for last name-->
 					<tr>
 						<td class="label">Last Name:</td>
 						<td>
 							<input id="employeeLastName" type="text" value="<% if (locals.employee && locals.employee.lastName) { %><%= locals.employee.lastName %><% } %>" class="update" />
 						</td>
 					</tr>
+					<!--Element of type text for password-->
 					<tr>
 						<td class="label">Password:</td>
 						<td>
 							<input id="employeePassword" type="password" value="" class="update" />
 						</td>
 					</tr>
+					<!--Element of type text for confirm password-->
 					<tr>
 						<td class="label">Confirm Password:</td>
 						<td>
 							<input id="employeeConfirmPassword" type="password" value="" class="update" />
 						</td>
 					</tr>
+					<!--Selection Functionality-->
 					<tr <% if (locals.isInitialEmployee) { %>class="hidden"<% } %>>
 						<td class="label">Employee Type:</td>
 						<td>
@@ -84,6 +95,8 @@
 			</table>
 		</div>
 
+
+		<!--Allow for save-->
 		<div class="employeeActionsWrapper <% if (locals.errorMessage && (locals.errorMessage !== "")) { %>hidden<% } %>">
 			<br />
 			<button id="saveButton" type="button" class="action">Save</button>
@@ -101,10 +114,13 @@
 		</div>
 	</div>
 
+
+	<!--Signing out-->
 	<div class="footer <% if (locals.isInitialEmployee) { %>hidden<% } %>">
 		<img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out" class="footer" />
 	</div>
 
+	
 </body>
 
 </html>
