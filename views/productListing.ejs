@@ -27,6 +27,7 @@
 			</h4>
 		</div>
 
+
 		<div class="productsWrapper">
 			<!--Ensure only elevated user can create new product listing-->
 			<div <% if (!locals.isElevatedUser) { %>class="hidden"<% } %>>
@@ -34,6 +35,9 @@
 			</div>
 			<br />
 			<br />
+
+
+
 
 			<!--Main code for Product Listing-->
 			<% if (locals.products && (locals.products.length > 0)) { %>
