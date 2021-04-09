@@ -35,6 +35,7 @@ const buildUpdateObject = (employeeSaveRequest: EmployeeSaveRequest): Object => 
 	return updateObject;
 };
 
+//Validation of Incoming Request
 const validateSaveRequest = (employeeSaveRequest: EmployeeSaveRequest): CommandResponse<Employee> => {
 	let errorMessage: string = "";
 
@@ -72,7 +73,7 @@ const validateSaveRequest = (employeeSaveRequest: EmployeeSaveRequest): CommandR
 export const execute = async (
 	employeeSaveRequest: EmployeeSaveRequest
 ): Promise<CommandResponse<Employee>> => {
-
+	//Call Validation
 	const validationResponse: CommandResponse<Employee> =
 		validateSaveRequest(employeeSaveRequest);
 	if (validationResponse.status !== 200) {
@@ -80,7 +81,7 @@ export const execute = async (
 	}
 
 	let updateTransaction: Sequelize.Transaction;
-
+	//Create DB Connection
 	return DatabaseConnection.createTransaction()
 		.then((createdTransaction: Sequelize.Transaction): Promise<EmployeeModel | null> => {
 			updateTransaction = createdTransaction;
