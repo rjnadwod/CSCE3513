@@ -4,12 +4,7 @@ export interface SignInRequest {
 	employeeId: string;
 }
 
-export interface ProductSaveRequest {
-	id?: string;
-	count: number;
-	lookupCode: string;
-}
-
+//Defined Save Request
 export interface EmployeeSaveRequest {
 	id?: string;
 	active: boolean;
@@ -20,6 +15,15 @@ export interface EmployeeSaveRequest {
 	classification: number;
 	isInitialEmployee?: boolean;
 }
+
+
+export interface ProductSaveRequest {
+	id?: string;
+	count: number;
+	lookupCode: string;
+}
+
+
 // End request object definitions
 
 // Response object definitions
