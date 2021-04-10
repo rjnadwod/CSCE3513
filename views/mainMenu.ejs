@@ -1,3 +1,4 @@
+<!--Main Menu for Sprint 2 Task 6-->
 <html>
 
 <head>
@@ -6,6 +7,7 @@
 
 	<link rel="stylesheet" type="text/css" href="/styles/master.css">
 
+	<!--Importing in master and mainMenu JS files-->
 	<script type="text/javascript" src="/scripts/master.js" defer></script>
 	<script type="text/javascript" src="/scripts/mainMenu.js" defer></script>
 </head>
@@ -16,6 +18,7 @@
 		<h1 class="primary-message">Main Menu</h1>
 	</div>
 		
+	<!--Error message functionality-->
 	<div id="main" class="main">
 		<div id="error" <% if (!locals.errorMessage || (locals.errorMessage === "")) { %> class="hidden" <% } %>>
 			<h4 id="errorMessage" class="error-message">
@@ -25,6 +28,7 @@
 			</h4>
 		</div>
 
+		<!--Main Menu Button Declarations-->
 		<div class="mainMenuActionsWrapper">
 			<br />
 			<button id="startTransactionButton" type="button" class="action" title="Functionality Not Available">Start Transaction</button>
@@ -34,13 +38,14 @@
 				<br />
 				<button id="createEmployeeButton" type="button" class="action">Create Employee</button>
 				<br /><br />
-				<button id="productSalesReportButton" type="button" class="action" title="Functionality Not Available">Product Sales</button>
+				<button id="productSalesReportButton" type="button" class="action" title="Functionality Not Available">Sales Report</button>
 				<br /><br />
-				<button id="cashierSalesReportButton" type="button" class="action" title="Functionality Not Available">Cashier Sales</button>
+				<button id="cashierSalesReportButton" type="button" class="action" title="Functionality Not Available">Cashier Report</button>
 			</div>
 		</div>
 	</div>
 
+	<!--Refresh Page-->
 	<div class="hidden">
 		<input type="checkbox" id="isRefreshed" class="hidden">
 		<script type="text/javascript">
@@ -57,6 +62,7 @@
 		</script>
 	</div>
 
+	<!--Sign out button-->
 	<div class="footer">
 		<img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out" class="footer" />
 	</div>

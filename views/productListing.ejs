@@ -1,3 +1,4 @@
+<!--Product Listing File-->
 <html>
 
 <head>
@@ -16,6 +17,7 @@
 		<h1 class="primary-message">Products Listing</h1>
 	</div>
 
+	<!--Code to deal with error messages-->
 	<div id="main" class="main">
 		<div id="error" <% if (!locals.errorMessage || (locals.errorMessage === "")) { %> class="hidden" <% } %>>
 			<h4 id="errorMessage" class="error-message">
@@ -25,13 +27,19 @@
 			</h4>
 		</div>
 
+
 		<div class="productsWrapper">
+			<!--Ensure only elevated user can create new product listing-->
 			<div <% if (!locals.isElevatedUser) { %>class="hidden"<% } %>>
 				<a href="/productDetail/" class="button">Create New</a>
 			</div>
 			<br />
 			<br />
 
+
+
+
+			<!--Main code for Product Listing-->
 			<% if (locals.products && (locals.products.length > 0)) { %>
 				<ul id="productsListing" class="products">
 					<% locals.products.forEach((product) => { %>
@@ -46,6 +54,7 @@
 			<% } %>
 		</div>
 
+		<!--Reloading page functionality-->
 		<div class="hidden">
 			<input type="checkbox" id="isRefreshed" class="hidden">
 			<script type="text/javascript">
@@ -63,6 +72,8 @@
 		</div>
 	</div>
 
+
+	<!--Sign out-->
 	<div class="footer">
 		<img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out" class="footer" />
 	</div>
