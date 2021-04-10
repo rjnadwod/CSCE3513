@@ -1,4 +1,6 @@
+<!--Employee Detail-->
 <html>
+
 
 <head>
 	<!-- Web page title-->
@@ -6,19 +8,21 @@
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
+
 	<link rel="stylesheet" type="text/css" href="/styles/master.css">
 
 	<script type="text/javascript" src="/scripts/master.js" defer></script>
 	<script type="text/javascript" src="/scripts/employeeDetail.js" defer></script>
 </head>
 
-<body>
 
+<body>
 	<div class="header">
 		<!-- Employee Detail page header -->
 		<h1 class="primary-message">Employee Detail</h1>
 	</div>
-		
+	<!--Allow for displaying error messages-->
+
 	<div id="main" class="main">
 		<!-- Check for errors with hidden  -->
 		<div id="error" <% if (!locals.errorMessage || (locals.errorMessage === "")) { %> class="hidden" <% } %>>
@@ -29,9 +33,12 @@
 			</h4>
 		</div>
 		<!-- Div which allows for employee details to be input into the system -->
+
 		<div class="inputContent">
+			<!--Providing inputs for the employee details-->
 			<table id="employeeDetails">
 				<tbody>
+					<!--Input type hidden for employee record ID-->
 					<tr class="hidden">
 						<td>ID:</td>
 						<td>
@@ -53,6 +60,7 @@
 							<input id="employeeEmployeeId" type="text" value="<% if (locals.employee && locals.employee.employeeId) { %><%= locals.employee.employeeId %><% } %>" class="update" disabled />
 						</td>
 					</tr>
+					<!--Element of type text for first name-->
 					<tr>
 						<td class="label">First Name:</td>
 						<td>
@@ -60,6 +68,7 @@
 							<input id="employeeFirstName" type="text" value="<% if (locals.employee && locals.employee.firstName) { %><%= locals.employee.firstName %><% } %>" class="update" />
 						</td>
 					</tr>
+					<!--Element of type text for last name-->
 					<tr>
 						<td class="label">Last Name:</td>
 						<td>
@@ -67,6 +76,7 @@
 							<input id="employeeLastName" type="text" value="<% if (locals.employee && locals.employee.lastName) { %><%= locals.employee.lastName %><% } %>" class="update" />
 						</td>
 					</tr>
+					<!--Element of type text for password-->
 					<tr>
 						<td class="label">Password:</td>
 						<td>
@@ -74,6 +84,7 @@
 							<input id="employeePassword" type="password" value="" class="update" />
 						</td>
 					</tr>
+					<!--Element of type text for confirm password-->
 					<tr>
 						<td class="label">Confirm Password:</td>
 						<td>
@@ -81,6 +92,7 @@
 							<input id="employeeConfirmPassword" type="password" value="" class="update" />
 						</td>
 					</tr>
+					<!--Selection Functionality-->
 					<tr <% if (locals.isInitialEmployee) { %>class="hidden"<% } %>>
 						<td class="label">Employee Type:</td>
 						<td>
@@ -96,6 +108,9 @@
 			</table>
 		</div>
 
+
+
+		<!--Allow for save-->
 		<div class="employeeActionsWrapper <% if (locals.errorMessage && (locals.errorMessage !== "")) { %>hidden<% } %>">
 			<br />
 			<!-- Option button to save the employee information that was entered -->
@@ -113,10 +128,15 @@
 			</div>
 		</div>
 	</div>
+
+
 		<!-- Sign-out button which returns user to sign-in view -->
+
 	<div class="footer <% if (locals.isInitialEmployee) { %>hidden<% } %>">
 		<img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out" class="footer" />
 	</div>
+
+
 
 </body>
 
