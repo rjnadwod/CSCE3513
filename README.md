@@ -9,7 +9,7 @@ To start via the terminal navigate to the source code directory and run the foll
 `$ npm run start`  
 
  # Landing page (list available products)
-`https://uarkregservnodejsweb.herokuapp.com/`  
+`https://copyandoverflow-registerapp.herokuapp.com/`  
 
  # Helper links
  ## EJS Linter
